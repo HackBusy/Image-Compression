@@ -19,7 +19,16 @@ namespace Image_And_Video_Compression
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            ImageCompression imageCompression = new ImageCompression();
+            imageCompression.FormClosed += CSchoiseClose;
+            imageCompression.Show();
 
+        }
+
+        private void CSchoiseClose(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

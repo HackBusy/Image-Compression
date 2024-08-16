@@ -16,8 +16,8 @@ namespace Image_And_Video_Compression
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ChoramaSubsampelingChoises());
-            Application.Run(new ImageCompression());
+            Application.Run(new ChoramaSubsampelingChoises());
+            //Application.Run(new ImageCompression());
         }
     }
 }
