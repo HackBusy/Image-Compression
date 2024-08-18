@@ -13,6 +13,8 @@ namespace Image_And_Video_Compression
 {
     public partial class ImageCompression : Form
     {
+
+        Button [] compressionButtons;
         public ImageCompression()
         {
             InitializeComponent();
@@ -41,10 +43,42 @@ namespace Image_And_Video_Compression
 
         private void loadImage(string filename)
         {
+
+            ((ISupportInitialize)(this.InputImage)).BeginInit();
+            this.Controls.Remove(this.addImageLabel);
+            this.InputImage.Dock = DockStyle.Top;
+            this.InputImage.Location = new Point(0, 0);
+            this.InputImage.Margin = new Padding(20);
+            this.InputImage.Size = new Size(1777, 450);
+            this.InputImage.TabIndex = 1;
+            this.InputImage.TabStop = false;
             this.InputImage.Image = Image.FromFile(filename);
             this.InputImage.Name = filename;
             this.InputImage.SizeMode = PictureBoxSizeMode.Zoom;
-            this.addImageLabel.Visible = false;
+            generateCompressionButtons();
+            this.Controls.Add(this.InputImage);
+            ((ISupportInitialize)(this.InputImage)).EndInit();
+           
+        }
+
+        private void generateCompressionButtons()
+        {
+            this.compressionButtons = new Button[4];
+            for (int i = 0; i < this.compressionButtons.Length; i++)
+            {
+                this.compressionButtons[i] = new Button();
+                int xLocation = (i) * 120 + i * 130;
+                this.compressionButtons[i].Location = new Point(120 + xLocation, 485);
+                this.compressionButtons[i].Name = "button" + i + 1;
+                this.compressionButtons[i].Size = new Size(130, 40);
+                this.compressionButtons[i].TabIndex = 0;
+                this.compressionButtons[i].UseVisualStyleBackColor = true;
+                this.Controls.Add(compressionButtons[i]);
+            }
+            this.compressionButtons[0].Text = "4:2:2";
+            this.compressionButtons[1].Text = "4:4:0";
+            this.compressionButtons[2].Text = "4:2:0";
+            this.compressionButtons[3].Text = "4:1:1";
         }
 
         private void label1_Click(object sender, EventArgs e)
