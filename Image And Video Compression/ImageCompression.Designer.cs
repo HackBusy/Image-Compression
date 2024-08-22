@@ -45,11 +45,12 @@ namespace Image_And_Video_Compression
             this.addImageLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addImageLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addImageLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.addImageLabel.Location = this.InputImage.Location;
             this.addImageLabel.Name = "addImageLabel";
             this.addImageLabel.Size = this.InputImage.Size;
             this.addImageLabel.TabIndex = 2;
-            this.addImageLabel.Text = "Upload Image";
+            this.addImageLabel.Text = "Drag or Click to Upload Image";
             this.addImageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.addImageLabel.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -73,7 +74,7 @@ namespace Image_And_Video_Compression
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1948, 855);
+            this.ClientSize = new System.Drawing.Size(1656, 900);
             this.Controls.Add(this.addImageLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
