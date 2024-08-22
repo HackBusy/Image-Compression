@@ -17,7 +17,7 @@ namespace Image_And_Video_Compression
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ImageButtonClick(object sender, EventArgs e)
         {
             this.Hide();
             ImageCompression imageCompression = new ImageCompression();
