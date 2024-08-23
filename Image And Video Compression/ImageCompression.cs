@@ -21,12 +21,17 @@ namespace Image_And_Video_Compression
         private PictureBox compressedPicture;
         private SaveFileDialog saveImage;
         private OpenFileDialog openFileDialog;
+        //private ChromaSubSampeling chromaSubSampeling;
         private String inputPath;
 
         public ImageCompression()
         {
             InitializeComponent();
+            this.InitialComponents();
+        }
 
+        private void InitialComponents()
+        {
             this.addImageLabel.DragDrop += new DragEventHandler(label1_DragDrop);
             this.addImageLabel.DragEnter += new DragEventHandler(label1_DragEnter);
             this.chooseCompression = new Label();
@@ -109,28 +114,29 @@ namespace Image_And_Video_Compression
         {
             this.enableAllDisableThisButton(this.compressionButtons, 3);
             this.Controls.Clear();
-            fixScreen();
+            //this.chromaSubSampeling = new CScompression411(this.InputImage);
+            fixScreen(this.InputImage.Image);
         }
 
         private void fourTwoCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 2);
             this.Controls.Clear();
-            fixScreen();
+            fixScreen(this.InputImage.Image);
         }
 
         private void fourFourCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 1);
             this.Controls.Clear();
-            fixScreen();
+            fixScreen(this.InputImage.Image);
         }
 
         private void twoTwoCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 0);
             this.Controls.Clear();
-            fixScreen();
+            fixScreen(this.InputImage.Image);
         }
 
         private void enableAllDisableThisButton(Button[] buttons, int disable)
@@ -142,7 +148,7 @@ namespace Image_And_Video_Compression
             buttons[disable].Enabled = false;
         }
 
-        private void fixScreen()
+        private void fixScreen(Image compressedImage)
         {
             
             ((ISupportInitialize)(this.compressedPicture)).BeginInit();
@@ -157,7 +163,7 @@ namespace Image_And_Video_Compression
             this.compressedPicture.Margin = new Padding(20);
             this.compressedPicture.TabIndex = 1;
             this.compressedPicture.TabStop = false;
-            this.compressedPicture.Image = this.InputImage.Image;
+            this.compressedPicture.Image = compressedImage;
             this.compressedPicture.SizeMode = PictureBoxSizeMode.Zoom;
             // 
             // saveButton
