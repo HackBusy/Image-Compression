@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace ChromaSubsamplingCompression
 {
-    abstract class ChromaSubsampling
+    public abstract class ChromaSubsampling
     {
         protected Bitmap m_OriginalImage;
         protected YCbCr m_YCbCrOriginalMap;

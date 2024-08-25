@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace ChromaSubsamplingCompression
 {
-    class CSCompression420 : ChromaSubsampling
+    public class CSCompression420 : ChromaSubsampling
     {
         YCbCr m_YCbCrCompressed420;
         YCbCr m_YCbCrDecompressed420;

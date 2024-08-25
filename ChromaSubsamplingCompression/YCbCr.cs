@@ -1,6 +1,6 @@
 ﻿namespace ChromaSubsamplingCompression
 {
-    class YCbCr
+    public class YCbCr
     {
         byte[,] m_Y;
         byte[,] m_Cb;

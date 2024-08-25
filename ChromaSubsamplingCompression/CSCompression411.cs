@@ -2,7 +2,7 @@
 
 namespace ChromaSubsamplingCompression
 {
-    class CSCompression411 : ChromaSubsampling
+    public class CSCompression411 : ChromaSubsampling
     {
         YCbCr m_YCbCrCompressed411;
         YCbCr m_YCbCrDecompressed411;
