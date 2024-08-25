@@ -53,7 +53,7 @@ namespace ChromaSubsamplingCompression
             }
         }
 
-        public Bitmap CompressedCb
+        public Bitmap DecompressedCb
         {
             get
             {
@@ -61,7 +61,7 @@ namespace ChromaSubsamplingCompression
             }
         }
 
-        public Bitmap CompressedCr
+        public Bitmap DecompressedCr
         {
             get
             {
