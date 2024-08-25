@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace Image_And_Video_Compression
+namespace Image_Compression
 {
-    partial class ImageCompression
+    partial class CompressionUI
     {
         /// <summary>
         /// Required designer variable.

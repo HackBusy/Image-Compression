@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Image_And_Video_Compression.Properties {
+namespace Image_Compression.Properties {
     using System;
     
     

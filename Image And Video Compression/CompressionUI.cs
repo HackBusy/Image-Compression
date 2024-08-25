@@ -1,18 +1,12 @@
-﻿using Image_And_Video_Compression.Properties;
-using System;
-using System.IO;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChromaSubsamplingCompression;
 
-namespace Image_And_Video_Compression
+namespace Image_Compression
 {
-    public partial class ImageCompression : Form
+    public partial class CompressionUI : Form
     {
 
         private Button [] compressionButtons;
@@ -21,10 +15,9 @@ namespace Image_And_Video_Compression
         private PictureBox compressedPicture;
         private SaveFileDialog saveImage;
         private OpenFileDialog openFileDialog;
-        //private ChromaSubSampeling chromaSubSampeling;
         private String inputPath;
 
-        public ImageCompression()
+        public CompressionUI()
         {
             InitializeComponent();
             this.InitialComponents();
@@ -106,37 +99,44 @@ namespace Image_And_Video_Compression
             this.compressionButtons[3].Text = "4:1:1";
             this.compressionButtons[0].Click += new EventHandler(this.twoTwoCompressionHandler);
             this.compressionButtons[1].Click += new EventHandler(this.fourFourCompressionHandler);
-            this.compressionButtons[2].Click += new EventHandler(this.fourTwoCompressionHandler);
+            this.compressionButtons[2].Click += new EventHandler(this.TwoZeroCompressionHandler);
             this.compressionButtons[3].Click += new EventHandler(this.oneOneCompressionHandler);
         }
 
         private void oneOneCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 3);
+            CSCompression411 cSCompression411 = new CSCompression411(inputPath);
+            Bitmap compressedImg = cSCompression411.m_CompressedImage;
             this.Controls.Clear();
-            //this.chromaSubSampeling = new CScompression411(this.InputImage);
-            fixScreen(this.InputImage.Image);
+            fixScreen(compressedImg);
         }
 
-        private void fourTwoCompressionHandler(object sender, EventArgs e)
+        private void TwoZeroCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 2);
+            CSCompression420 cSCompression420 = new CSCompression420(inputPath);
+            Bitmap compressedImg = cSCompression420.m_CompressedImage;
             this.Controls.Clear();
-            fixScreen(this.InputImage.Image);
+            fixScreen(compressedImg);
         }
 
         private void fourFourCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 1);
+            CSCompression440 cSCompression440 = new CSCompression440(inputPath);
+            Bitmap compressedImg = cSCompression440.m_CompressedImage;
             this.Controls.Clear();
-            fixScreen(this.InputImage.Image);
+            fixScreen(compressedImg);
         }
 
         private void twoTwoCompressionHandler(object sender, EventArgs e)
         {
             this.enableAllDisableThisButton(this.compressionButtons, 0);
+            CSCompression422 cSCompression422 = new CSCompression422(inputPath);
+            Bitmap compressedImg = cSCompression422.m_CompressedImage;
             this.Controls.Clear();
-            fixScreen(this.InputImage.Image);
+            fixScreen(compressedImg);
         }
 
         private void enableAllDisableThisButton(Button[] buttons, int disable)
@@ -225,7 +225,7 @@ namespace Image_And_Video_Compression
             String saveInput = "";
             saveImage.Title = "Save Compressed Image";
             saveImage.InitialDirectory = @"C:\";
-            saveImage.Filter = "PNG file(*.png)|*.png| JPG File(*.JPG)|*.JPG";
+            saveImage.Filter = "PNG file(*.png)|*.png";
             saveImage.FilterIndex = 3;
             saveImage.ShowDialog();
             saveInput = saveImage.FileName;

@@ -46,25 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChoramaSubsamplingChoises.cs">
+    <Compile Include="CompressionUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChoramaSubsamplingChoises.Designer.cs">
-      <DependentUpon>ChoramaSubsamplingChoises.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ImageCompression.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ImageCompression.Designer.cs">
-      <DependentUpon>ImageCompression.cs</DependentUpon>
+    <Compile Include="CompressionUI.Designer.cs">
+      <DependentUpon>CompressionUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChoramaSubsamplingChoises.resx">
-      <DependentUpon>ChoramaSubsamplingChoises.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImageCompression.resx">
-      <DependentUpon>ImageCompression.cs</DependentUpon>
+    <EmbeddedResource Include="CompressionUI.resx">
+      <DependentUpon>CompressionUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChromaSubsamplingCompression\ChromaSubsamplingCompression.csproj">
+      <Project>{572d6e62-a364-4e70-b3fd-1dab5a5287c1}</Project>
+      <Name>ChromaSubsamplingCompression</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

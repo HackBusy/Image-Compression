@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Image_And_Video_Compression
+namespace Image_Compression
 {
-    internal static class Program
+    public static class Program
     {
         [STAThread]
-        static void Main()
+        public static void Main()
         {
-            Application.Run(new ChoramaSubsampelingChoises());
+            Application.Run(new CompressionUI());
         }
     }
 }
