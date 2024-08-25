@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Image_And_Video_Compression
+namespace ChromaSubsamplingCompression
 {
     abstract class ChromaSubsampling
     {
@@ -10,7 +10,7 @@ namespace Image_And_Video_Compression
         public ChromaSubsampling(string i_FilePath)
         {
             m_OriginalImage = new Bitmap(i_FilePath);
-            m_YCbCrOriginalMap = new YCbCr(m_OriginalImage.Height, m_OriginalImage.Width, 1, 1); // full vertical resolution, full horizontal resolution
+            m_YCbCrOriginalMap = new YCbCr(m_OriginalImage.Width, m_OriginalImage.Height, 1, 1); // full vertical resolution, full horizontal resolution
 
             ConvertRGBtoYCbCr();
         }
@@ -22,9 +22,9 @@ namespace Image_And_Video_Compression
             byte blue;
             Color imagePixel;
 
-            for (int y = 0; y < m_OriginalImage.Height; y++)
+            for (int x = 0; x < m_OriginalImage.Width; x++)
             {
-                for (int x = 0; x < m_OriginalImage.Width; x++)
+                for (int y = 0; y < m_OriginalImage.Height; y++)
                 {
                     imagePixel = m_OriginalImage.GetPixel(x, y);
                     red = imagePixel.R;
@@ -32,9 +32,9 @@ namespace Image_And_Video_Compression
                     blue = imagePixel.B;
 
                     // Convert RGB values to YCbCr
-                    m_YCbCrOriginalMap.Y[x, y] = (byte)(0.299 * red + 0.587 * green + 0.114 * blue);
-                    m_YCbCrOriginalMap.Cb[x, y] = (byte)(128 - 0.168736 * red - 0.331264 * green + 0.5 * blue);
-                    m_YCbCrOriginalMap.Cr[x, y] = (byte)(128 + 0.5 * red - 0.418688 * green - 0.081312 * blue);
+                    m_YCbCrOriginalMap.Y[x, y] = (byte)((0.299 * red) + (0.587 * green) + (0.114 * blue));
+                    m_YCbCrOriginalMap.Cb[x, y] = (byte)(128 - (0.168736 * red) - (0.331264 * green) + (0.5 * blue));
+                    m_YCbCrOriginalMap.Cr[x, y] = (byte)(128 + (0.5 * red) - (0.418688 * green) - (0.081312 * blue));
                 }
             }
         }

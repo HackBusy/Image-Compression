@@ -41,6 +41,7 @@
     <Compile Include="CSCompression420.cs" />
     <Compile Include="CSCompression422.cs" />
     <Compile Include="CSCompression440.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="YCbCr.cs" />
   </ItemGroup>
   <ItemGroup>

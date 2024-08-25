@@ -1,4 +1,4 @@
-﻿namespace Image_And_Video_Compression
+﻿namespace ChromaSubsamplingCompression
 {
     class YCbCr
     {
@@ -6,11 +6,11 @@
         byte[,] m_Cb;
         byte[,] m_Cr;
 
-        public YCbCr(int i_Height, int i_Width, int i_HeightDivider, int i_WidthDivider)
+        public YCbCr(int i_Width, int i_Height, int i_WidthDivider, int i_HeightDivider)
         {
-            m_Y = new byte[i_Height, i_Width];
-            m_Cb = new byte[i_Height/i_HeightDivider, i_Width/i_WidthDivider];
-            m_Cr = new byte[i_Height/i_HeightDivider, i_Width/i_WidthDivider];
+            m_Y = new byte[i_Width, i_Height];
+            m_Cb = new byte[i_Width / i_WidthDivider, i_Height / i_HeightDivider];
+            m_Cr = new byte[i_Width / i_WidthDivider, i_Height / i_HeightDivider];
         }
 
         public byte[,] Y
