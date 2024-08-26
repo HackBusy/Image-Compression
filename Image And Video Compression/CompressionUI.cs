@@ -74,6 +74,7 @@ namespace Image_Compression
             String[] s = (String[])e.Data.GetData(DataFormats.FileDrop, false);
             if(s[0].Contains(".png") || s[0].Contains(".JPG") || s[0].Contains(".jpg")) {
                 loadImage(s[0]);
+                inputPath = s[0];
             }
         }
 
