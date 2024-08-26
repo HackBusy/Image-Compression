@@ -89,7 +89,7 @@
             this.originalCr.Location = new System.Drawing.Point(0, 451);
             this.originalCr.Name = "originalCr";
             this.originalCr.Size = new System.Drawing.Size(850, 449);
-            this.originalCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.originalCr.TabIndex = 2;
             this.originalCr.TabStop = false;
             // 
@@ -111,7 +111,7 @@
             this.originalCb.Location = new System.Drawing.Point(0, 0);
             this.originalCb.Name = "originalCb";
             this.originalCb.Size = new System.Drawing.Size(850, 450);
-            this.originalCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.originalCb.TabIndex = 1;
             this.originalCb.TabStop = false;
             // 
@@ -144,7 +144,7 @@
             this.compressedCr.Location = new System.Drawing.Point(0, 451);
             this.compressedCr.Name = "compressedCr";
             this.compressedCr.Size = new System.Drawing.Size(802, 449);
-            this.compressedCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.compressedCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.compressedCr.TabIndex = 3;
             this.compressedCr.TabStop = false;
             // 
@@ -155,7 +155,7 @@
             this.compressedCb.Location = new System.Drawing.Point(0, 0);
             this.compressedCb.Name = "compressedCb";
             this.compressedCb.Size = new System.Drawing.Size(802, 450);
-            this.compressedCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.compressedCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.compressedCb.TabIndex = 2;
             this.compressedCb.TabStop = false;
             // 
