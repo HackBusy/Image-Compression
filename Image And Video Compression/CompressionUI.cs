@@ -11,11 +11,13 @@ namespace Image_Compression
 
         private Button [] compressionButtons;
         private Button saveButton;
+        private Button ShowCompression;
         private Label chooseCompression, compressedLabel, normalLabel;
         private PictureBox compressedPicture;
         private SaveFileDialog saveImage;
         private OpenFileDialog openFileDialog;
         private String inputPath;
+        private Bitmap[] diffrentCompression;
 
         public CompressionUI()
         {
@@ -34,7 +36,26 @@ namespace Image_Compression
             this.openFileDialog = new OpenFileDialog();
             this.compressedPicture = new PictureBox();
             this.saveButton = new Button();
+            this.ShowCompression = new Button();
+            this.diffrentCompression = new Bitmap[4]; 
             this.saveButton.Click += new EventHandler(this.saveImageButton);
+            this.ShowCompression.Click += new EventHandler(this.showCompressionEvent);
+        }
+
+        private void showCompressionEvent(object sender, EventArgs e)
+        {
+            using (CbCrChanges showChanges = new CbCrChanges(diffrentCompression[0], diffrentCompression[1], diffrentCompression[2], diffrentCompression[3]))
+            {
+                showChanges.ShowDialog();
+            }
+        }
+
+        private void add4Photos(Bitmap photo1, Bitmap photo2, Bitmap photo3, Bitmap photo4)
+        {
+            diffrentCompression[0] = photo1;
+            diffrentCompression[1] = photo2;
+            diffrentCompression[2] = photo3;
+            diffrentCompression[3] = photo4;
         }
 
         private void label1_DragEnter(object sender, DragEventArgs e)
@@ -107,7 +128,8 @@ namespace Image_Compression
         {
             this.enableAllDisableThisButton(this.compressionButtons, 3);
             CSCompression411 cSCompression411 = new CSCompression411(inputPath);
-            Bitmap compressedImg = cSCompression411.m_CompressedImage;
+            Bitmap compressedImg = cSCompression411.CompressedImage;
+            add4Photos(cSCompression411.OriginalCb, cSCompression411.OriginalCr, cSCompression411.DecompressedCb, cSCompression411.DecompressedCr);
             this.Controls.Clear();
             fixScreen(compressedImg);
         }
@@ -116,7 +138,8 @@ namespace Image_Compression
         {
             this.enableAllDisableThisButton(this.compressionButtons, 2);
             CSCompression420 cSCompression420 = new CSCompression420(inputPath);
-            Bitmap compressedImg = cSCompression420.m_CompressedImage;
+            Bitmap compressedImg = cSCompression420.CompressedImage;
+            add4Photos(cSCompression420.OriginalCb, cSCompression420.OriginalCr, cSCompression420.DecompressedCb, cSCompression420.DecompressedCr);
             this.Controls.Clear();
             fixScreen(compressedImg);
         }
@@ -125,7 +148,8 @@ namespace Image_Compression
         {
             this.enableAllDisableThisButton(this.compressionButtons, 1);
             CSCompression440 cSCompression440 = new CSCompression440(inputPath);
-            Bitmap compressedImg = cSCompression440.m_CompressedImage;
+            Bitmap compressedImg = cSCompression440.CompressedImage;
+            add4Photos(cSCompression440.OriginalCb, cSCompression440.OriginalCr, cSCompression440.DecompressedCb, cSCompression440.DecompressedCr);
             this.Controls.Clear();
             fixScreen(compressedImg);
         }
@@ -134,7 +158,8 @@ namespace Image_Compression
         {
             this.enableAllDisableThisButton(this.compressionButtons, 0);
             CSCompression422 cSCompression422 = new CSCompression422(inputPath);
-            Bitmap compressedImg = cSCompression422.m_CompressedImage;
+            Bitmap compressedImg = cSCompression422.CompressedImage;
+            add4Photos(cSCompression422.OriginalCb, cSCompression422.OriginalCr, cSCompression422.DecompressedCb, cSCompression422.DecompressedCr);
             this.Controls.Clear();
             fixScreen(compressedImg);
         }
@@ -154,6 +179,17 @@ namespace Image_Compression
             ((ISupportInitialize)(this.compressedPicture)).BeginInit();
             ((ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
+            //
+            // showCompression
+            //
+            this.ShowCompression.Location = new Point(500, 5);
+            this.ShowCompression.Size = new Size(85, 30);
+            this.ShowCompression.TabIndex = 0;
+            this.ShowCompression.Name = "ShowCompreesion";
+            this.ShowCompression.Text = @"CbCr Maps";
+            this.ShowCompression.Font = new Font("Microsoft Sans Serif", 10f);
+            this.ShowCompression.Cursor = Cursors.Hand;
+            this.ShowCompression.UseVisualStyleBackColor = true;
             //
             // compressedPicture
             //
@@ -214,6 +250,7 @@ namespace Image_Compression
             this.splitContainer1.SplitterDistance = 550;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.TabIndex = 3;
+            this.Controls.Add((Button)this.ShowCompression);
             this.Controls.Add(splitContainer1);
             ((ISupportInitialize) (this.compressedPicture)).EndInit();
             ((ISupportInitialize)(this.splitContainer1)).EndInit();

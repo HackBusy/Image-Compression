@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CbCrChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CbCrChanges.Designer.cs">
+      <DependentUpon>CbCrChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompressionUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CbCrChanges.resx">
+      <DependentUpon>CbCrChanges.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CompressionUI.resx">
       <DependentUpon>CompressionUI.cs</DependentUpon>
     </EmbeddedResource>
