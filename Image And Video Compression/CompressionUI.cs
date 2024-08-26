@@ -72,7 +72,7 @@ namespace Image_Compression
         private void label1_DragDrop(object sender, DragEventArgs e)
         {
             String[] s = (String[])e.Data.GetData(DataFormats.FileDrop, false);
-            if(s[0].Contains(".png") || s[0].Contains(".JPG")) {
+            if(s[0].Contains(".png") || s[0].Contains(".JPG") || s[0].Contains(".jpg")) {
                 loadImage(s[0]);
             }
         }
