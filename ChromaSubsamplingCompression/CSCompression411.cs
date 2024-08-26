@@ -15,7 +15,8 @@ namespace ChromaSubsamplingCompression
             m_YCbCrCompressed411 = new YCbCr(m_YWidth, m_YHeight, 4, 1);
 
             // full vertical resolution, full horizontal resolution
-            m_YCbCrDecompressed411 = new YCbCr(m_YWidth, m_YHeight, 1, 1); 
+            m_YCbCrDecompressed411 = new YCbCr(m_YWidth, m_YHeight, 1, 1);
+            m_YCbCrDecompressed411.Y = m_YCbCrOriginalMap.Y;
             m_DecompressedImage = new Bitmap(m_YWidth, m_YHeight);
             m_DecompressedCb = new Bitmap(m_YWidth, m_YHeight);
             m_DecompressedCr = new Bitmap(m_YWidth, m_YHeight);
@@ -76,7 +77,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int cbValue = m_YCbCrOriginalMap.Cb[x, y];
+                    int cbValue = m_YCbCrDecompressed411.Cb[x, y];
                     Color cbColor = Color.FromArgb(cbValue, cbValue, cbValue);
                     m_DecompressedCb.SetPixel(x, y, cbColor);
                 }
@@ -90,7 +91,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int crValue = m_YCbCrOriginalMap.Cr[x, y];
+                    int crValue = m_YCbCrDecompressed411.Cr[x, y];
                     Color crColor = Color.FromArgb(crValue, crValue, crValue);
                     m_DecompressedCr.SetPixel(x, y, crColor);
                 }
