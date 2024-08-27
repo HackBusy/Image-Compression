@@ -68,14 +68,14 @@
             this.splitContainer1.Panel2.Controls.Add(this.compressedCr);
             this.splitContainer1.Panel2.Controls.Add(this.compressedCb);
             this.splitContainer1.Size = new System.Drawing.Size(1656, 900);
-            this.splitContainer1.SplitterDistance = 850;
+            this.splitContainer1.SplitterDistance = 825;
             this.splitContainer1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(12, 459);
+            this.label2.Location = new System.Drawing.Point(12, 448);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 25);
             this.label2.TabIndex = 0;
@@ -86,10 +86,10 @@
             // 
             this.originalCr.BackColor = System.Drawing.SystemColors.Control;
             this.originalCr.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.originalCr.Location = new System.Drawing.Point(0, 451);
+            this.originalCr.Location = new System.Drawing.Point(0, 443);
             this.originalCr.Name = "originalCr";
-            this.originalCr.Size = new System.Drawing.Size(850, 449);
-            this.originalCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalCr.Size = new System.Drawing.Size(825, 457);
+            this.originalCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.originalCr.TabIndex = 2;
             this.originalCr.TabStop = false;
             // 
@@ -97,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Location = new System.Drawing.Point(12, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 25);
             this.label3.TabIndex = 0;
@@ -110,8 +110,8 @@
             this.originalCb.Dock = System.Windows.Forms.DockStyle.Top;
             this.originalCb.Location = new System.Drawing.Point(0, 0);
             this.originalCb.Name = "originalCb";
-            this.originalCb.Size = new System.Drawing.Size(850, 450);
-            this.originalCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalCb.Size = new System.Drawing.Size(825, 445);
+            this.originalCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.originalCb.TabIndex = 1;
             this.originalCb.TabStop = false;
             // 
@@ -119,7 +119,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(12, 459);
+            this.label4.Location = new System.Drawing.Point(12, 448);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 25);
             this.label4.TabIndex = 0;
@@ -130,7 +130,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 0;
@@ -141,10 +141,10 @@
             // 
             this.compressedCr.BackColor = System.Drawing.SystemColors.Control;
             this.compressedCr.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.compressedCr.Location = new System.Drawing.Point(0, 451);
+            this.compressedCr.Location = new System.Drawing.Point(0, 443);
             this.compressedCr.Name = "compressedCr";
-            this.compressedCr.Size = new System.Drawing.Size(802, 449);
-            this.compressedCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.compressedCr.Size = new System.Drawing.Size(827, 457);
+            this.compressedCr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.compressedCr.TabIndex = 3;
             this.compressedCr.TabStop = false;
             // 
@@ -154,8 +154,8 @@
             this.compressedCb.Dock = System.Windows.Forms.DockStyle.Top;
             this.compressedCb.Location = new System.Drawing.Point(0, 0);
             this.compressedCb.Name = "compressedCb";
-            this.compressedCb.Size = new System.Drawing.Size(802, 450);
-            this.compressedCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.compressedCb.Size = new System.Drawing.Size(827, 445);
+            this.compressedCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.compressedCb.TabIndex = 2;
             this.compressedCb.TabStop = false;
             // 
@@ -165,6 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1656, 900);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "CbCrChanges";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

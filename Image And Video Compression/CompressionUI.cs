@@ -74,6 +74,7 @@ namespace Image_Compression
             String[] s = (String[])e.Data.GetData(DataFormats.FileDrop, false);
             if(s[0].Contains(".png") || s[0].Contains(".JPG") || s[0].Contains(".jpg")) {
                 loadImage(s[0]);
+                inputPath = s[0];
             }
         }
 
@@ -90,7 +91,7 @@ namespace Image_Compression
             this.InputImage.TabStop = false;
             this.InputImage.Image = Image.FromFile(filename);
             this.InputImage.Name = filename;
-            this.InputImage.SizeMode = PictureBoxSizeMode.Zoom;
+            this.InputImage.SizeMode = PictureBoxSizeMode.CenterImage;
             generateCompressionButtons();
             generateLabels(chooseCompression, "Choose compression", new Size(800, 35), 15f);
             this.Controls.Add(chooseCompression);
@@ -200,7 +201,7 @@ namespace Image_Compression
             this.compressedPicture.TabIndex = 1;
             this.compressedPicture.TabStop = false;
             this.compressedPicture.Image = compressedImage;
-            this.compressedPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            this.compressedPicture.SizeMode = PictureBoxSizeMode.CenterImage;
             // 
             // saveButton
             //
