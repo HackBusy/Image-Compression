@@ -216,7 +216,6 @@ namespace Image_Compression
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = DockStyle.Fill;
             this.splitContainer1.Location = new Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             //

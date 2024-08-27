@@ -69,7 +69,7 @@ namespace Image_Compression
             this.splitContainer1.Size = new System.Drawing.Size(150, 100);
             this.splitContainer1.TabIndex = 0;
             // 
-            // ImageCompression
+            // CompressionUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +78,7 @@ namespace Image_Compression
             this.Controls.Add(this.addImageLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "ImageCompression";
+            this.Name = "CompressionUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImageCompression";
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).EndInit();
