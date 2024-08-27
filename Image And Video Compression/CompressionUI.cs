@@ -246,7 +246,7 @@ namespace Image_Compression
             //
             // ImageCompression
             //
-            this.splitContainer1.Size = new Size(1104, 855);
+            this.splitContainer1.Size = new Size(1104, 580);
             this.splitContainer1.SplitterDistance = 550;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.TabIndex = 3;
