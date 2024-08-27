@@ -4,44 +4,34 @@ namespace ChromaSubsamplingCompression
 {
     public class CSCompression411 : ChromaSubsampling
     {
-        YCbCr m_YCbCrCompressed411;
-        YCbCr m_YCbCrDecompressed411;
-
         public CSCompression411(string i_FilePath) : base(i_FilePath)
         {
             // full vertical resolution, 1/4 horizontal resolution
             m_CrCbWidth = m_YWidth / 4;
             m_CrCbHeight = m_YHeight / 1;
-            m_YCbCrCompressed411 = new YCbCr(m_YWidth, m_YHeight, 4, 1);
+            m_YCbCrCompressed = new YCbCr(m_YWidth, m_YHeight, 4, 1);
 
-            // full vertical resolution, full horizontal resolution
-            m_YCbCrDecompressed411 = new YCbCr(m_YWidth, m_YHeight, 1, 1);
-            m_YCbCrDecompressed411.Y = m_YCbCrOriginalMap.Y;
-            m_DecompressedImage = new Bitmap(m_YWidth, m_YHeight);
-            m_DecompressedCb = new Bitmap(m_YWidth, m_YHeight);
-            m_DecompressedCr = new Bitmap(m_YWidth, m_YHeight);
-
-            compression();
-            decompression();
+            Compression();
+            Decompression();
             VisualizeCb();
             VisualizeCr();
             ConvertYCbCrToRGB();
         }
 
-        protected override void compression()
+        protected override void Compression()
         {
             for (int x = 0; x < m_CrCbWidth; x++)
             {
                 for (int y = 0; y < m_CrCbHeight; y++)
                 {
                     // Average the 1x4 block of chroma values
-                    m_YCbCrCompressed411.Cb[x, y] = (byte)(
+                    m_YCbCrCompressed.Cb[x, y] = (byte)(
                         (m_YCbCrOriginalMap.Cb[x * 4, y] +
                          m_YCbCrOriginalMap.Cb[x * 4 + 1, y] +
                          m_YCbCrOriginalMap.Cb[x * 4 + 2, y] +
                          m_YCbCrOriginalMap.Cb[x * 4 + 3, y]) / 4);
 
-                    m_YCbCrCompressed411.Cr[x, y] = (byte)(
+                    m_YCbCrCompressed.Cr[x, y] = (byte)(
                         (m_YCbCrOriginalMap.Cr[x * 4, y] +
                          m_YCbCrOriginalMap.Cr[x * 4 + 1, y] +
                          m_YCbCrOriginalMap.Cr[x * 4 + 2, y] +
@@ -50,22 +40,22 @@ namespace ChromaSubsamplingCompression
             }
         }
 
-        protected override void decompression()
+        protected override void Decompression()
         {
             for (int x = 0; x < m_CrCbWidth; x++)
             {
                 for (int y = 0; y < m_CrCbHeight; y++)
                 {
                     // Replicate each subsampled chroma value to the 1x4 block in the decompressed array
-                    m_YCbCrDecompressed411.Cb[x * 4, y] = m_YCbCrCompressed411.Cb[x, y];
-                    m_YCbCrDecompressed411.Cb[x * 4 + 1, y] = m_YCbCrCompressed411.Cb[x, y];
-                    m_YCbCrDecompressed411.Cb[x * 4 + 2, y] = m_YCbCrCompressed411.Cb[x, y];
-                    m_YCbCrDecompressed411.Cb[x * 4 + 3, y] = m_YCbCrCompressed411.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x * 4, y] = m_YCbCrCompressed.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x * 4 + 1, y] = m_YCbCrCompressed.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x * 4 + 2, y] = m_YCbCrCompressed.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x * 4 + 3, y] = m_YCbCrCompressed.Cb[x, y];
 
-                    m_YCbCrDecompressed411.Cr[x * 4, y] = m_YCbCrCompressed411.Cr[x, y];
-                    m_YCbCrDecompressed411.Cr[x * 4 + 1, y] = m_YCbCrCompressed411.Cr[x, y];
-                    m_YCbCrDecompressed411.Cr[x * 4 + 2, y] = m_YCbCrCompressed411.Cr[x, y];
-                    m_YCbCrDecompressed411.Cr[x * 4 + 3, y] = m_YCbCrCompressed411.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x * 4, y] = m_YCbCrCompressed.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x * 4 + 1, y] = m_YCbCrCompressed.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x * 4 + 2, y] = m_YCbCrCompressed.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x * 4 + 3, y] = m_YCbCrCompressed.Cr[x, y];
                 }
             }
         }
@@ -77,7 +67,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int cbValue = m_YCbCrDecompressed411.Cb[x, y];
+                    int cbValue = m_YCbCrDecompressed.Cb[x, y];
                     Color cbColor = Color.FromArgb(cbValue, cbValue, cbValue);
                     m_DecompressedCb.SetPixel(x, y, cbColor);
                 }
@@ -91,7 +81,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int crValue = m_YCbCrDecompressed411.Cr[x, y];
+                    int crValue = m_YCbCrDecompressed.Cr[x, y];
                     Color crColor = Color.FromArgb(crValue, crValue, crValue);
                     m_DecompressedCr.SetPixel(x, y, crColor);
                 }
@@ -105,9 +95,9 @@ namespace ChromaSubsamplingCompression
                 for (int y = 0; y < m_YHeight; y++)
                 {
                     // Convert YCbCr to RGB
-                    int yValue = m_YCbCrDecompressed411.Y[x, y];
-                    int cbValue = m_YCbCrDecompressed411.Cb[x, y] - 128;
-                    int crValue = m_YCbCrDecompressed411.Cr[x, y] - 128;
+                    int yValue = m_YCbCrOriginalMap.Y[x, y];
+                    int cbValue = m_YCbCrDecompressed.Cb[x, y] - 128;
+                    int crValue = m_YCbCrDecompressed.Cr[x, y] - 128;
 
                     int rValue = (int)(yValue + (1.402 * crValue));
                     int gValue = (int)(yValue - (0.344136 * cbValue) - (0.714136 * crValue));

@@ -4,60 +4,50 @@ namespace ChromaSubsamplingCompression
 {
     public class CSCompression440 : ChromaSubsampling
     {
-        YCbCr m_YCbCrCompressed440;
-        YCbCr m_YCbCrDecompressed440;
-
         public CSCompression440(string i_FilePath) : base(i_FilePath)
         {
             // 1/2 vertical resolution, full horizontal resolution
             m_CrCbWidth = m_YWidth / 1;
             m_CrCbHeight = m_YHeight / 2;
-            m_YCbCrCompressed440 = new YCbCr(m_YWidth, m_YHeight, 1, 2);
+            m_YCbCrCompressed = new YCbCr(m_YWidth, m_YHeight, 1, 2);
 
-            // full vertical resolution, full horizontal resolution
-            m_YCbCrDecompressed440 = new YCbCr(m_YWidth, m_YHeight, 1, 1);
-            m_YCbCrDecompressed440.Y = m_YCbCrOriginalMap.Y;
-            m_DecompressedImage = new Bitmap(m_YWidth, m_YHeight);
-            m_DecompressedCb = new Bitmap(m_YWidth, m_YHeight);
-            m_DecompressedCr = new Bitmap(m_YWidth, m_YHeight);
-
-            compression();
-            decompression();
+            Compression();
+            Decompression();
             VisualizeCb();
             VisualizeCr();
             ConvertYCbCrToRGB();
         }
 
-        protected override void compression()
+        protected override void Compression()
         {
             for (int x = 0; x < m_CrCbWidth; x++)
             {
                 for (int y = 0; y < m_CrCbHeight; y++)
                 {
                     // Average the 2x1 block of chroma values
-                    m_YCbCrCompressed440.Cb[x, y] = (byte)(
+                    m_YCbCrCompressed.Cb[x, y] = (byte)(
                         (m_YCbCrOriginalMap.Cb[x, y * 2] +
                          m_YCbCrOriginalMap.Cb[x, y * 2 + 1]) / 2);
 
-                    m_YCbCrCompressed440.Cr[x, y] = (byte)(
+                    m_YCbCrCompressed.Cr[x, y] = (byte)(
                         (m_YCbCrOriginalMap.Cr[x, y * 2] +
                          m_YCbCrOriginalMap.Cr[x, y * 2 + 1]) / 2);
                 }
             }
         }
 
-        protected override void decompression()
+        protected override void Decompression()
         {
             for (int x = 0; x < m_CrCbWidth; x++)
             {
                 for (int y = 0; y < m_CrCbHeight; y++)
                 {
                     // Replicate each subsampled chroma value to the 2x1 block in the decompressed array
-                    m_YCbCrDecompressed440.Cb[x, y * 2] = m_YCbCrCompressed440.Cb[x, y];
-                    m_YCbCrDecompressed440.Cb[x, y * 2 + 1] = m_YCbCrCompressed440.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x, y * 2] = m_YCbCrCompressed.Cb[x, y];
+                    m_YCbCrDecompressed.Cb[x, y * 2 + 1] = m_YCbCrCompressed.Cb[x, y];
 
-                    m_YCbCrDecompressed440.Cr[x, y * 2] = m_YCbCrCompressed440.Cr[x, y];
-                    m_YCbCrDecompressed440.Cr[x, y * 2 + 1] = m_YCbCrCompressed440.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x, y * 2] = m_YCbCrCompressed.Cr[x, y];
+                    m_YCbCrDecompressed.Cr[x, y * 2 + 1] = m_YCbCrCompressed.Cr[x, y];
                 }
             }
         }
@@ -69,7 +59,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int cbValue = m_YCbCrDecompressed440.Cb[x, y];
+                    int cbValue = m_YCbCrDecompressed.Cb[x, y];
                     Color cbColor = Color.FromArgb(cbValue, cbValue, cbValue);
                     m_DecompressedCb.SetPixel(x, y, cbColor);
                 }
@@ -83,7 +73,7 @@ namespace ChromaSubsamplingCompression
             {
                 for (int y = 0; y < m_YHeight; y++)
                 {
-                    int crValue = m_YCbCrDecompressed440.Cr[x, y];
+                    int crValue = m_YCbCrDecompressed.Cr[x, y];
                     Color crColor = Color.FromArgb(crValue, crValue, crValue);
                     m_DecompressedCr.SetPixel(x, y, crColor);
                 }
@@ -97,9 +87,9 @@ namespace ChromaSubsamplingCompression
                 for (int y = 0; y < m_YHeight; y++)
                 {
                     // Convert YCbCr to RGB
-                    int yValue = m_YCbCrDecompressed440.Y[x, y];
-                    int cbValue = m_YCbCrDecompressed440.Cb[x, y] - 128;
-                    int crValue = m_YCbCrDecompressed440.Cr[x, y] - 128;
+                    int yValue = m_YCbCrOriginalMap.Y[x, y];
+                    int cbValue = m_YCbCrDecompressed.Cb[x, y] - 128;
+                    int crValue = m_YCbCrDecompressed.Cr[x, y] - 128;
 
                     int rValue = (int)(yValue + (1.402 * crValue));
                     int gValue = (int)(yValue - (0.344136 * cbValue) - (0.714136 * crValue));

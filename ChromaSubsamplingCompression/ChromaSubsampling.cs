@@ -6,6 +6,8 @@ namespace ChromaSubsamplingCompression
     {
         protected Bitmap m_OriginalImage;
         protected YCbCr m_YCbCrOriginalMap;
+        protected YCbCr m_YCbCrCompressed;
+        protected YCbCr m_YCbCrDecompressed;
         protected int m_YWidth;
         protected int m_YHeight;
         protected int m_CrCbWidth;
@@ -24,6 +26,11 @@ namespace ChromaSubsamplingCompression
             m_YCbCrOriginalMap = new YCbCr(m_YWidth, m_YHeight, 1, 1); // full vertical resolution, full horizontal resolution
             m_OriginalCb = new Bitmap(m_YWidth, m_YHeight);
             m_OriginalCr = new Bitmap(m_YWidth, m_YHeight);
+            m_YCbCrDecompressed = new YCbCr(m_YWidth, m_YHeight, 1, 1); // full vertical resolution, full horizontal resolution
+            m_DecompressedImage = new Bitmap(m_YWidth, m_YHeight);
+            m_DecompressedCb = new Bitmap(m_YWidth, m_YHeight);
+            m_DecompressedCr = new Bitmap(m_YWidth, m_YHeight);
+
 
             ConvertRGBtoYCbCr();
         }
@@ -123,9 +130,9 @@ namespace ChromaSubsamplingCompression
             return io_RGB;
         }
 
-        protected abstract void compression();
+        protected abstract void Compression();
 
-        protected abstract void decompression();
+        protected abstract void Decompression();
 
         protected abstract void ConvertYCbCrToRGB();
     }
