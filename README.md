@@ -9,7 +9,8 @@ This method is widely used in formats like 4:2:2 and 4:2:0, where some color inf
 *The 4:4:4 format represents the original uncompressed image*
 
 ![Subsampling Methods Comparison](images/subsampling.png)
-*Source: [Wikipedia YCbCr Article](https://en.wikipedia.org/wiki/YCbCr)*
+
+*Source: [Wikipedia Chroma subsampling Article](https://en.wikipedia.org/wiki/Chroma_subsampling)*
 
 ## Class Details
 
@@ -31,6 +32,7 @@ This method is widely used in formats like 4:2:2 and 4:2:0, where some color inf
 - **ConvertRGBtoYCbCr**: Converts each pixel's RGB values to Y, Cb, and Cr subsampled components using mathematical formulas:
 
 ![RGB to YCbCr Conversion](images/rgb-to-ycbcr.png)
+
 *Source: [Wikipedia YCbCr Article](https://en.wikipedia.org/wiki/YCbCr)*
 
 - **VisualizeCb** and **VisualizeCr**: Converts Cb and Cr components back into color format for creating chrominance maps for comparison
@@ -52,6 +54,7 @@ Derived classes for specific subsampling types.
 - **ConvertYCbCrToRGB**: Converts YCbCr values back into RGB values using mathematical formulas:
 
 ![YCbCr to RGB Conversion](images/ycbcr-to-rgb.png)
+
 *Source: [Wikipedia YCbCr Article](https://en.wikipedia.org/wiki/YCbCr)*
 
 ## Technical Details
